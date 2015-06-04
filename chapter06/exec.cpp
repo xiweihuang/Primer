@@ -22,7 +22,8 @@ typedef int (*pf)(int, int);
 int main()
 {
 	// std::vector<pf> v;
-	std::vector<function<int(int, int)>> v;
+	// std::vector<function<int(int, int)>> v;
+	std::vector<pf> v;
 	v.push_back(sum);
 	v.push_back(sub);
 	v.push_back(mul);
