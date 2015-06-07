@@ -8,14 +8,14 @@ bool compareVector(const vector<int> &v1, const vector<int> &v2) {
 	// 先判断大小是否一样
 	auto s1 = v1.size();
 	auto s2 = v2.size();
-	if (s1 != s2) {
+	if (s1 != s2) 
 		return false;
-	} else {
-		for (auto b1 = v1.begin(), b2 = v2.begin(); b1 != v1.end(); ++b1, ++b2) {
-			if (*b1 != *b2)
-				return false;
-		}
+
+	for (auto b1 = v1.begin(), b2 = v2.begin(); b1 != v1.end(); ++b1, ++b2) {
+		if (*b1 != *b2)
+			return false;
 	}
+
 	return true;
 }
 
