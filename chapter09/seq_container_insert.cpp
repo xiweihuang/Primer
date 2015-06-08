@@ -4,8 +4,8 @@
 // vector  string  deque  list  (forward_list  array) 这两个是c++11之后才有的
 
 // push_back():  vector, string, deque, list
-// push_front(): deque, list
-// insert():     vector, string, deque, list
+// push_front(): deque, list, forward_list
+// insert():     vector, string, deque, list  (forward_list提供另外一个版本的insert)
 // emplace()、emplace_back()、emplace_front() 和对应的 push 一样
 
 // vector: push_back(), insert(), emplace_back(), emplace()

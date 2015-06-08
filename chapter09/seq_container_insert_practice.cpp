@@ -46,6 +46,12 @@ void exercise3() {
 			d1.push_back(val);
 		else
 			d2.push_back(val);
+
+		// 对奇偶性的判断，还可以用其他方法
+		// if (val & 1)
+		// 	d2.push_back(val);
+		// else
+		// 	d1.push_back(val);
 	}
 	for (auto &val : d1)
 		printf("%d  ", val);
