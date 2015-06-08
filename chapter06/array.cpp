@@ -2,19 +2,25 @@
 
 using namespace std;
 
-// void print(const int *beg, const int *end)
-// {
-// 	while (beg != end) {
-// 		cout << *beg++ << endl;
-// 	}
-// }
-
-void print(int (&arr)[10])
-{
-	for (auto elem : arr) {
-		cout << elem << endl;
+void print(const int *beg, const int *end) {
+	while (beg != end) {
+		cout << *beg++ << endl;
 	}
 }
+
+void print(const int *beg, const int *end)
+{
+	while (beg != end) {
+		cout << *beg++ << endl;
+	}
+}
+
+// void print(int (&arr)[10])
+// {
+// 	for (auto elem : arr) {
+// 		cout << elem << endl;
+// 	}
+// }
 
 int find_max(const int &num1, const int *p)
 {
@@ -30,8 +36,8 @@ void swap_point(int *&p1, int *&p2)
 
 int main(int argc, char *argv[])
 {
-	// int j[10] = {0, 1};
-	// // print(begin(j), end(j));
+	int j[10] = {0, 1};
+	print(begin(j), end(j));
 	// print(j);
 
 	// int a = 10;
@@ -45,9 +51,9 @@ int main(int argc, char *argv[])
 	// swap_point(p1, p2);
 	// cout << *p1 << *p2 << endl;
 
-	for (size_t i = 1; i != argc; ++i) {
-		cout << argv[i] << endl;
-	}
+	// for (size_t i = 1; i != argc; ++i) {
+	// 	cout << argv[i] << endl;
+	// }
 
 	return 0;
 }

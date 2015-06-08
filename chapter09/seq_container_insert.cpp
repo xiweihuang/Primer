@@ -3,6 +3,19 @@
 // 顺序容器
 // vector  string  deque  list  (forward_list  array) 这两个是c++11之后才有的
 
+// push_back():  vector, string, deque, list
+// push_front(): deque, list
+// insert():     vector, string, deque, list
+// emplace()、emplace_back()、emplace_front() 和对应的 push 一样
+
+// vector: push_back(), insert(), emplace_back(), emplace()
+// string: push_back(), insert()
+// deque:  push_back(), push_front(), insert(), emplace_back(), emplace_front(), emplace()
+// list:   push_back(), push_front(), insert(), emplace_back(), emplace_front(), emplace()
+
+// forward_list: 
+// array:
+
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -11,6 +24,24 @@
 #include <deque>
 
 using namespace std;
+
+void pushItem() {
+	vector<string> vs;
+	string word;
+	while (cin >> word)
+		vs.push_back(word);
+
+	for (auto &s : vs)
+		cout << s << endl;
+
+	list<int> ilist;
+	for (size_t ix = 0; ix != 4; ++ix)
+		ilist.push_front(ix);
+
+	for (auto beg = ilist.cbegin(); beg != ilist.cend(); ++beg) {
+		cout << *beg << endl;
+	}
+}
 
 // insert 的基本用法
 void insert_method() {
@@ -93,22 +124,7 @@ void emplace_basic() {
 
 int main()
 {
-	// vector<string> vs;
-	// string word;
-	// while (cin >> word)
-	// 	vs.push_back(word);
-
-	// for (auto &s : vs)
-	// 	cout << s << endl;
-
-	// list<int> ilist;
-	// for (size_t ix = 0; ix != 4; ++ix)
-	// 	ilist.push_front(ix);
-
-	// for (auto beg = ilist.cbegin(); beg != ilist.cend(); ++beg) {
-	// 	cout << *beg << endl;
-	// }
-
+	// pushItem()
 	// insert_method();
 	// insert_in_same_pos();
 	emplace_basic();
