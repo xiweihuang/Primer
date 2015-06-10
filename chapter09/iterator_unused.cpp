@@ -11,6 +11,18 @@
 
 using namespace std;
 
+void test() {
+	vector<int> vi = {10, 20, 30, 40, 50};
+
+	auto curr = vi.begin();
+	curr = vi.insert(curr, 100);  // 前插，返回指向插入的那个元素的迭代器
+	printf("%d\n=================\n", *curr);
+
+	for (auto &val : vi) {
+		printf("%d\n", val);
+	}
+}
+
 void update_iterator() {
 	vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	auto iter = vi.begin();
@@ -35,12 +47,13 @@ void update_iterator() {
 
 void save_end_error() {
 	
-	auto begin = v.begin(), end = v.end();
+	// auto begin = v.begin(), end = v.end();
 }
 
 int main()
 {
-	update_iterator();
+	// update_iterator();
+	test();
 	return 0;
 }
 

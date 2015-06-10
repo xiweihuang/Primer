@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <forward_list>
+#include <string>
 
 using namespace std;
 
@@ -34,9 +35,72 @@ void example1() {
 	}
 }
 
+void test() {
+	forward_list<int> fi = {10, 20, 30, 40, 50};
+	auto prev = fi.before_begin();
+	auto curr = fi.begin();
+
+	prev = curr;
+	++curr;
+	// prev->10, curr->20
+
+	curr = fi.erase_after(prev);
+	// prev->10, curr->30
+
+	printf("%d\n", *prev);
+	printf("%d\n", *curr);
+}
+
+void exerise1() {
+	forward_list<int> fi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	auto prev = fi.before_begin();
+	auto curr = fi.begin();
+	while (curr != fi.end()) {
+		if (*curr % 2) {
+			curr = fi.erase_after(prev);
+		} else {
+			prev = curr;
+			++curr;
+		}
+	}
+	for (auto &val : fi) {
+		printf("%d\n", val);
+	}
+}
+
+void func2(forward_list<string> &fs, const string &s1, const string &s2) {
+	auto prev = fs.before_begin();
+	auto curr = fs.begin();
+	auto flag = false;
+	while (curr != fs.end()) {
+		if (*curr == s1) {
+			flag = true;
+			prev = curr;
+			curr = fs.insert_after(prev, s2);
+		} else {
+			prev = curr;
+			++curr;
+		}
+	}
+	if (!flag) {
+		fs.insert_after(prev, s2);
+	}
+}
+void exerise2() {
+	forward_list<string> fs = {"Kobe", "Jordan", "James"};
+	func2(fs, "Kobe1", "NBA");
+
+	for (auto &val : fs) {
+		printf("%s\n", val.c_str());
+	}
+}
+
 int main()
 {
-	example1();
+	// test();
+	// example1();
+	// exerise1();
+	exerise2();
 	return 0;
 }
 
