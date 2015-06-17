@@ -35,7 +35,7 @@ int main()
 void exercise1() {
 	// list<int> vi = {10, 20, 10, 30, 40, 50, 10, 60};
 	vector<int> vi = {10, 20, 10, 30, 40, 50, 10, 60};
-	auto times = count(vi.begin(), vi.begin()+6, 10); // 支持快速随机访问的，迭代器才能夸很多个元素来加。string  vector  deque
+	auto times = count(vi.begin(), vi.begin()+6, 10); // 支持快速随机访问的，迭代器才能跨很多个元素来加。string  vector  deque
 	printf("%ld\n", times);
 
 	list<string> ls = {"Kobe", "Jordan", "Kobe", "James", "Durcant", "Kobe"};
