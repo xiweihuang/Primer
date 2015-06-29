@@ -17,8 +17,10 @@ using namespace std;
 void useMap() {
 	map<string, size_t> word_count;
 	string word;
-	while (cin >> word)
+	while (cin >> word) {
+		string 
 		++word_count[word];
+	}
 	for (const auto &w : word_count) {
 		cout << w.first << ",  " << w.second << endl;
 	}
