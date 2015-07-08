@@ -41,6 +41,22 @@ void exercise_12_06() {
 	// delete ptr;
 }
 
+shared_ptr<int> clone(int p) {
+	return shared_ptr<int>(new int(p));
+}
+
+void test() {
+	// shared_ptr<int> p(new int(42));
+	// int *q = p.get();  // 使用q时，不能让它管理的指针被释放
+	// {
+	// 	shared_ptr<int>(q);
+	// }
+
+	int* p = new int(1024);
+	p.reset(new int(1024));
+
+}
+
 int main()
 {
 	exercise_12_06();
