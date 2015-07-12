@@ -1,27 +1,13 @@
-#include <memory>
-#include <vector>
-#include <string>
+#include "StrBlob.h"
+#include "StrBlobPtr.h"
 
-using namespace std;
 
-class StrBlobPtr {
-public:
-	StrBlobPtr() : curr(0) {}
-	StrBlobPtr(StrBlob &a, size_t sz = 0) : wptr(a.data), curr(sz) {}
-	string& deref() const;
-	StrBlobPtr& incr();
-private:
-	shared_ptr<vector<string>> check(size_t, const string &) const;
-	weak_ptr<vector<string>> wptr;
-	size_t curr;  // 在数组中的当前位置
-};
+StrBlobPtr::StrBlobPtr() : curr(0) {
 
-shared_ptr<vector<string>> StrBlobPtr::check(size_t, i, const string &msg) const {
-	auto ret = wptr.lock();
-	if (ret)
-		return ret;
-	return nullptr;
 }
+StrBlobPtr::StrBlobPtr(StrBlob &a, size_t sz = 0) : wptr(a.data), curr(sz) {  // 为了访问data成员，要设置友元
+
+}  
 
 string& StrBlobPtr::deref() const {
 	auto p = check(curr, "dereference past end");
@@ -34,8 +20,15 @@ StrBlobPtr& StrBlobPtr::incr() {
 	return *this;
 }
 
-int main()
-{
+// bool operator!=(const StrBlobPtr& p) {return p.curr != curr; }
 
-	return 0;
+
+
+shared_ptr<vector<string>> StrBlobPtr::check(size_t i, const string &msg) const {
+	auto ret = wptr.lock();
+	if (!ret)
+		throw std::runtime_error("unbound StrBlobPtr");
+	if ( i >= ret->size())
+		throw  std::out_of_range(msg);
+	return ret;
 }
