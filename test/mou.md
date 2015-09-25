@@ -27,6 +27,15 @@ Simple inline link <http://chenluois.com>, another inline link [Smaller](http://
 
 #### Inline code and Block code
 
+```
+	#include <stdio.h>
+	int main()
+	{
+		
+		return 0;
+	}
+```
+
 Inline code are surround by `backtick` key. To create a block code:
 
 	Indent each line by at least 1 tab, or 4 spaces.
