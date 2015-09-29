@@ -6,6 +6,8 @@
 #include <memory>
 #include <initializer_list>
 
+using namespace std;
+
 class StrBlob
 {
 public:
@@ -22,50 +24,57 @@ public:
 	std::string& front();
 	std::string& back();
 
+	const std::string& front() const
+	{
+		return data_->front();
+	}
+	const std::string& back() const
+	{
+		return data_->back();
+	}
+
+
 private:
 	std::shared_ptr<std::vector<std::string>> data_;
 	// void check()
 };
 
 
-
-// using namespace std;
-
-// inline
-// StrBlob::StrBlob() : data_(make_shared<vector<string>>())
-// {
-// }
+inline
+StrBlob::StrBlob() : data_(make_shared<vector<string>>())
+{
+}
 
 
-// inline
-// StrBlob::StrBlob(initializer_list<string> il) : data_(make_shared<vector<string>>(il))
-// {
-// }
+inline
+StrBlob::StrBlob(initializer_list<string> il) : data_(make_shared<vector<string>>(il))
+{
+}
 
-// inline
-// void StrBlob::push_back(const string &t)
-// {
-// 	data_->push_back(t);
-// }
+inline
+void StrBlob::push_back(const string &t)
+{
+	data_->push_back(t);
+}
 
-// inline
-// void StrBlob::pop_back()
-// {
-// 	data_->pop_back();
-// }
+inline
+void StrBlob::pop_back()
+{
+	data_->pop_back();
+}
 
-// inline
-// string& StrBlob::front()
-// {
-// 	return data_->front();
-// }
+inline
+string& StrBlob::front()
+{
+	return data_->front();
+}
 
 
-// inline
-// string& StrBlob::back()
-// {
-// 	return data_->back();
-// }
+inline
+string& StrBlob::back()
+{
+	return data_->back();
+}
 
 
 
