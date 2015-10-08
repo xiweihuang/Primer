@@ -64,7 +64,7 @@ void test2()
 	// 错误
 	// vector<string> v2("a", "an", "the");
 
-	vector<int> ivec(10, -1);  // 情况1，不能使用拷贝初始化
+	vector<int> ivec(10, -1);  // 情况1，不能用列表初始化
 }
 
 
