@@ -16,6 +16,17 @@
 using namespace std;
 
 
+int getValueAndMove(SNode*& pNode)
+{
+	int value = 0;
+	if (pNode) {
+		value = pNode->value;
+		pNode = pNode->pNext;
+	}
+	return value;
+}
+
+
 SNode* Add(SNode* pHead1, SNode* pHead2)
 {
 	SNode* pSum = new SNode(0);
@@ -26,28 +37,28 @@ SNode* Add(SNode* pHead1, SNode* pHead2)
 	int carry = 0;  // 进位
 	int value;
 
-	while (p1 && p2) {
-		value = p1->value + p2->value + carry;
+	while (p1 || p2) {
+		int val1 = getValueAndMove(p1);
+		int val2 = getValueAndMove(p2);
+		value = val1 + val2 + carry;
 		carry = value/10;
 		value %= 10;
 		pCur = new SNode(value);
 		pTail->pNext = pCur;
 		pTail = pCur;
-		p1 = p1->pNext;
-		p2 = p2->pNext;
 	}
 
 	// 处理较长的链
-	SNode* p = p1 ? p1 : p2;
-	while (p) {
-		value = p->value + carry;
-		carry = value/10;
-		value %= 10;
-		pCur = new SNode(value);
-		pTail->pNext = pCur;
-		pTail = pCur;
-		p = p->pNext;
-	}
+	// SNode* p = p1 ? p1 : p2;
+	// while (p) {
+	// 	value = p->value + carry;
+	// 	carry = value/10;
+	// 	value %= 10;
+	// 	pCur = new SNode(value);
+	// 	pTail->pNext = pCur;
+	// 	pTail = pCur;
+	// 	p = p->pNext;
+	// }
 
 	// 处理可能存在的进位
 	if (carry != 0) {
@@ -56,6 +67,7 @@ SNode* Add(SNode* pHead1, SNode* pHead2)
 
 	return pSum;
 }
+
 
 void test1();
 
