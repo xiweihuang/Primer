@@ -1,26 +1,16 @@
 #include <iostream>
+#include <time.h>
 using namespace std;
-
-int LocalMaximum(const int* A, int size)
-{
-	int left = 0;
-	int right = size - 1;
-	int mid;
-	while (left < right)
-	{
-		mid = (left + right) / 2;
-		cout << mid << endl;
-		if ((A[mid] > A[mid+1]))
-			right = mid;
-		else
-			left = mid + 1;
-	}
-	return A[left];
-}
 
 int main()
 {
-	int A[] = {1, 2, 3, 4, 5, 8, 6};
-	cout << LocalMaximum(A, 7);
+	clock_t start, finish;
+	start = clock();
+
+	for (size_t i = 0; i < 10000000000; i++);
+
+	finish = clock();
+	double totaltime = (double)(finish-start)/CLOCKS_PER_SEC;
+	std::cout << totaltime*1000 << "ms" << std::endl;
 	return 0;
 }
