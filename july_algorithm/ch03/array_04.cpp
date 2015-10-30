@@ -17,64 +17,64 @@
 #include <algorithm>
 using namespace std;
 
-class PreSum
-{
-public:
-	PreSum(int sum = 0, int index = 0) : sum_(sum), index_(index) {}
-	bool operator<(PreSum& rhs)
-	{
-		return sum_ < rhs.sum_;
-	}
-	int operator-(const PreSum& rhs)
-	{
-		return sum_ - rhs.sum_;
-	}
-public:
-	int sum_;
-	int index_;
-};
+// class PreSum
+// {
+// public:
+// 	PreSum(int sum = 0, int index = 0) : sum_(sum), index_(index) {}
+// 	bool operator<(PreSum& rhs)
+// 	{
+// 		return sum_ < rhs.sum_;
+// 	}
+// 	int operator-(const PreSum& rhs)
+// 	{
+// 		return sum_ - rhs.sum_;
+// 	}
+// public:
+// 	int sum_;
+// 	int index_;
+// };
 
-
-int MinSubArray(const int* a, const int size)
-{
-	// PreSum sum[size];
-	vector<PreSum> sum;
-	sum.emplace_back(0, 0);
-	for (int i = 1; i < size; ++i) {
-		int cur_sum = sum.back().sum_ + a[i];
-		sum.emplace_back(cur_sum, i);
-	}
-	sort(sum.begin(), sum.end());
-	// sort(sum);
-
-	int minSum = abs(sum[0] - sum[1]);
-	for (int i = 1; i < sum.size() - 1; ++i) {
-		int dis = abs(sum[i] - sum[i + 1]);
-		if (dis < minSum) {
-			minSum = dis;
-		}
-	}
-	return minSum;
-}
 
 // int MinSubArray(const int* a, const int size)
 // {
-// 	int sum[size];
-// 	sum[0] = 0;
+// 	// PreSum sum[size];
+// 	vector<PreSum> sum;
+// 	sum.emplace_back(0, 0);
 // 	for (int i = 1; i < size; ++i) {
-// 		sum[i] = sum[i-1] + a[i];
+// 		int cur_sum = sum.back().sum_ + a[i];
+// 		sum.emplace_back(cur_sum, i);
 // 	}
-// 	sort(sum, sum+size);
+// 	sort(sum.begin(), sum.end());
+// 	// sort(sum);
 
 // 	int minSum = abs(sum[0] - sum[1]);
-// 	for (int i = 1; i < size - 1; ++i) {
-// 		int dis = abs(sum[i] - sum[i+1]);
+// 	for (int i = 1; i < sum.size() - 1; ++i) {
+// 		int dis = abs(sum[i] - sum[i + 1]);
 // 		if (dis < minSum) {
 // 			minSum = dis;
 // 		}
 // 	}
 // 	return minSum;
 // }
+
+int MinSubArray(const int* a, const int size)
+{
+	int sum[size];
+	sum[0] = 0;
+	for (int i = 1; i < size; ++i) {
+		sum[i] = sum[i-1] + a[i];
+	}
+	sort(sum, sum+size);
+
+	int minSum = abs(sum[0] - sum[1]);
+	for (int i = 1; i < size - 1; ++i) {
+		int dis = abs(sum[i] - sum[i+1]);
+		if (dis < minSum) {
+			minSum = dis;
+		}
+	}
+	return minSum;
+}
 
 int main()
 {
