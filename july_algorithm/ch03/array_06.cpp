@@ -8,6 +8,7 @@
 **********/
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct SBucket
@@ -34,7 +35,8 @@ struct SBucket
 
 int CalcMaxGap(const int* A, const int size)
 {
-	SBucket* pBucket = new SBucket[size];
+	// SBucket* pBucket = new SBucket[size];
+	vector<SBucket> pBucket(size);
 	int nMax = A[0];
 	int nMin = A[0];
 	for (int i = 1; i < size; ++i) {
@@ -68,7 +70,7 @@ int CalcMaxGap(const int* A, const int size)
 		}
 	}
 
-	delete[] pBucket;
+	// delete[] pBucket;
 	return nGap;
 }
 
