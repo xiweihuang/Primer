@@ -26,17 +26,29 @@ void CantorExpansion(const vector<int>& a, vector<int>& b)
 	}
 }
 
-void CantorExpansionR(const vector<int>& a, vector<int>& b)
+void CantorExpansionR(const vector<int>& a, vector<int>& result)
 {
-	
+	// 取值范围
+	vector<int> pat = {10, 13, 18, 20, 31};
+	for (int i = 0; i < a.size(); ++i) {
+		result.push_back(pat[a[i]]);
+		pat.erase(pat.begin() + a[i]);
+	}
 }
+
+
 
 int main()
 {
-	vector<int> a = {4, 6, 2, 5, 3, 1};
-	vector<int> b;
-	CantorExpansion(a, b);
-	for (auto& v : b) {
+	// vector<int> a = {4, 6, 2, 5, 3, 1};
+	// vector<int> b;
+	// CantorExpansion(a, b);
+
+	vector<int> result;
+	vector<int> b = { 3, 1, 2, 0, 0 };
+	CantorExpansionR(b, result);
+
+	for (auto& v : result) {
 		cout << v << ' ';
 	}
 	cout << endl;
